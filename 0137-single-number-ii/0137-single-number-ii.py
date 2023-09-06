@@ -1,7 +1,9 @@
 class Solution:
     def singleNumber(self, nums: List[int]) -> int:
-        n = 0
-        for i in nums:
-            if nums.count(i)==1:
-                 n += i  
-        return n
+        nums.sort()
+        i = 0
+        while i < len(nums) - 1:
+            if nums[i] != nums[i+1]:
+                return nums[i]
+            i += 3
+        return nums[-1]
