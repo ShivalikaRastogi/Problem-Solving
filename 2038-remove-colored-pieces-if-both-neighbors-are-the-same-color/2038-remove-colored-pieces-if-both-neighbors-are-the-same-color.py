@@ -1,9 +1,13 @@
 class Solution:
     def winnerOfGame(self, colors: str) -> bool:
-        c = collections.Counter()
-        for x, t in groupby(colors):
-            c[x] += max(len(list(t)) - 2, 0)
+        alice = 0
+        bob = 0
 
-        if c['A'] > c['B']:
-            return True
-        return False
+        for index, character in enumerate(colors):
+            if index != 0 and index != len(colors)-1:
+                if colors[index] == colors[index-1] == colors[index+1] == 'A':
+                    alice += 1
+                elif colors[index] == colors[index-1] == colors[index+1] == 'B':
+                    bob += 1
+
+        return alice > bob 
